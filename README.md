@@ -70,6 +70,19 @@ $data = [
 SimpleXLSXGen::fromArray( $data )->saveAs('debug.xlsx');
 ```
 
+### Use in Worpress plugin
+If you want to use the library in your own Wordpress plugin, especially the function `downloadAs`, you might need to call `ob_start();` at the beginning of your main plugin php file. Otherwise headers cannot be written e.g. when rendering your plugin options page.
+```php
+<?php
+/**
+ * Plugin Name: Fancy Wordpress Plugin using SimpleXLSXGen
+ */
+
+namespace MY_PLUGIN_NS;
+ob_start();
+// ... rest of your plugin code
+```
+
 
 ## History
 v0.9.22 (2020-11-04) Added multiple sheets support, thx [Savino59](https://github.com/Savino59), class ready for extend now<br/> 
